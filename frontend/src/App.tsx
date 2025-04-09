@@ -2,6 +2,7 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import MainPage from "./pages/MainPage";
+import Category from "./pages/Category/Category";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         {/* Protected routes with Navbar */}
         <Route element={<MainPage />}>
           <Route path="/" element={<Home />} />
+          <Route path="/category" element={<Category />} />
         </Route>
       </Routes>
     </Router>

@@ -30,7 +30,7 @@ const NavBar = () => {
 
           <div className="hidden sm:flex items-center space-x-4">
             <Link
-              to=""
+              to="/category"
               className="text-black hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium"
             >
               Shop
@@ -46,12 +46,6 @@ const NavBar = () => {
               className="text-black hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium"
             >
               New Arrivals
-            </Link>
-            <Link
-              to=""
-              className="text-black hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium"
-            >
-              Brands
             </Link>
           </div>
 
