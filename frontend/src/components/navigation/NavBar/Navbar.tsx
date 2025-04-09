@@ -19,8 +19,8 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   return (
-    <Disclosure as="nav" className="bg-white shadow-sm">
-      <div className="mx-auto container h-20">
+    <Disclosure as="nav" className="bg-white shadow-sm ">
+      <div className="mx-auto container h-20 border-b-2 border-gray-200">
         <div className="relative flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link to="/" className="flex shrink-0 items-center">

@@ -2,7 +2,6 @@ import React from "react";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { CardProductProps } from "../../../interfaces/CardProductProps";
 
-
 const CardProduct: React.FC<CardProductProps> = ({
   title,
   price,
@@ -11,9 +10,11 @@ const CardProduct: React.FC<CardProductProps> = ({
   onAddToCart,
   discount,
 }) => {
+  const fixedRating = parseFloat(Number(rating).toFixed(1)); // Ensure rating is between 0 and 5
+
   const renderRatingStars = () => {
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
+    const fullStars = Math.floor(fixedRating);
+    const hasHalfStar = fixedRating % 1 >= 0.5;
     const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
     return (
@@ -51,10 +52,9 @@ const CardProduct: React.FC<CardProductProps> = ({
 
   return (
     <div className="w-full max-w-[300px] h-[410px] bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-      {/* Product Image */}
       <div className="relative w-full h-[300px] overflow-hidden">
         <img
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 hover:cursor-pointer"
           src={image}
           alt={title}
           loading="lazy"
@@ -74,7 +74,7 @@ const CardProduct: React.FC<CardProductProps> = ({
           </h2>
           <div className="flex items-center mt-1">
             {renderRatingStars()}
-            <span className="text-xs text-gray-500 ml-1">({rating})</span>
+            <span className="text-xs text-gray-500 ml-1">({fixedRating})</span>
           </div>
         </div>
 
@@ -96,7 +96,7 @@ const CardProduct: React.FC<CardProductProps> = ({
 
           <button
             onClick={onAddToCart}
-            className="bg-black text-white px-3 py-1 rounded text-sm hover:bg-gray-800 transition-colors"
+            className="bg-black text-white px-3 py-1 rounded text-sm hover:bg-gray-800 transition-colors hover:cursor-pointer"
           >
             Add to Cart
           </button>

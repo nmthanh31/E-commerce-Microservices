@@ -8,7 +8,7 @@ const Home = () => {
     {
       title: "T-shirt with Tape Details",
       price: 120,
-      image: "/images/T-shirt.png",
+      image: "/images/products/T-shirt.png",
       rating: 4.5,
       discount: 20,
       onAddToCart: () => console.log("Added to cart"),
@@ -16,7 +16,7 @@ const Home = () => {
     {
       title: "T-shirt with Tape Details",
       price: 120,
-      image: "/images/T-shirt.png",
+      image: "/images/products/T-shirt.png",
       rating: 4.5,
       discount: 20,
       onAddToCart: () => console.log("Added to cart"),
@@ -24,7 +24,7 @@ const Home = () => {
     {
       title: "T-shirt with Tape Details",
       price: 120,
-      image: "/images/T-shirt.png",
+      image: "/images/products/T-shirt.png",
       rating: 4.5,
       discount: 20,
       onAddToCart: () => console.log("Added to cart"),
@@ -32,7 +32,7 @@ const Home = () => {
     {
       title: "T-shirt with Tape Details",
       price: 120,
-      image: "/images/T-shirt.png",
+      image: "/images/products/T-shirt.png",
       rating: 4.5,
       discount: 20,
       onAddToCart: () => console.log("Added to cart"),
@@ -122,7 +122,6 @@ const Home = () => {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };
