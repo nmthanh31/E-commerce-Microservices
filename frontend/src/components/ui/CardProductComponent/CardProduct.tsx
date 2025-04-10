@@ -1,6 +1,8 @@
 import React from "react";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { CardProductProps } from "../../../interfaces/CardProductProps";
+import { Link } from "react-router-dom";
+import { renderRatingStars } from "../../../utils/renderRatingStars";
 
 const CardProduct: React.FC<CardProductProps> = ({
   title,
@@ -12,53 +14,22 @@ const CardProduct: React.FC<CardProductProps> = ({
 }) => {
   const fixedRating = parseFloat(Number(rating).toFixed(1)); // Ensure rating is between 0 and 5
 
-  const renderRatingStars = () => {
-    const fullStars = Math.floor(fixedRating);
-    const hasHalfStar = fixedRating % 1 >= 0.5;
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-
-    return (
-      <>
-        {/* Full stars */}
-        {Array(fullStars)
-          .fill(0)
-          .map((_, i) => (
-            <StarIcon
-              key={`full-${i}`}
-              className="w-4 h-4 text-yellow-400 fill-current"
-            />
-          ))}
-
-        {/* Half star */}
-        {hasHalfStar && (
-          <div className="relative w-4 h-4">
-            <StarIcon className="absolute text-gray-300 fill-current" />
-            <StarIcon
-              className="absolute text-yellow-400 fill-current"
-              style={{ clipPath: "inset(0 50% 0 0)" }}
-            />
-          </div>
-        )}
-
-        {/* Empty stars */}
-        {Array(emptyStars)
-          .fill(0)
-          .map((_, i) => (
-            <StarIcon key={`empty-${i}`} className="w-4 h-4 text-gray-300" />
-          ))}
-      </>
-    );
-  };
-
   return (
     <div className="w-full max-w-[300px] h-[410px] bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <div className="relative w-full h-[300px] overflow-hidden">
-        <img
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 hover:cursor-pointer"
-          src={image}
-          alt={title}
-          loading="lazy"
-        />
+        <Link
+          to={`/product/${title}`}
+          className="w-full h-full block hover:cursor-pointer"
+          title={title}
+          aria-label={title}
+        >
+          <img
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 hover:cursor-pointer"
+            src={image}
+            alt={title}
+            loading="lazy"
+          />
+        </Link>
         {discount && (
           <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
             -{discount}%
@@ -73,7 +44,7 @@ const CardProduct: React.FC<CardProductProps> = ({
             {title}
           </h2>
           <div className="flex items-center mt-1">
-            {renderRatingStars()}
+            {renderRatingStars(fixedRating)}
             <span className="text-xs text-gray-500 ml-1">({fixedRating})</span>
           </div>
         </div>

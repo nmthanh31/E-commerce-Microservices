@@ -1,3 +1,6 @@
+import { randomDate } from "../utils/randomDate";
+import { shuffleArray } from "../utils/suffleArray";
+
 export interface CardProductProps {
   title: string;
   price: number;
@@ -8,31 +11,6 @@ export interface CardProductProps {
   category?: string;
   publishedAt?: string;
 }
-
-const shuffleArray = <T,>(array: T[]): T[] => {
-  const newArray = [...array];
-  for (let i = newArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-  }
-  return newArray;
-};
-
-// const randomDate = () => {
-//   const now = new Date();
-//   const daysAgo = Math.floor(Math.random() * 30); // từ 0 đến 29 ngày trước
-//   const date = new Date(now.setDate(now.getDate() - daysAgo));
-//   return date.toISOString();
-// };
-const randomDate = (pastDays = 90) => {
-  const now = new Date();
-  const past = new Date(now);
-  past.setDate(past.getDate() - pastDays);
-
-  const randomTime =
-    past.getTime() + Math.random() * (now.getTime() - past.getTime());
-  return new Date(randomTime).toISOString();
-};
 
 export const listProducts: CardProductProps[] = shuffleArray([
   ...Array.from({ length: 5 }, (_, i) => ({
