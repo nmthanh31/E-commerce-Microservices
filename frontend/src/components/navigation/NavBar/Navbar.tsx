@@ -19,8 +19,8 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   return (
-    <Disclosure as="nav" className="bg-white shadow-sm">
-      <div className="mx-auto container h-20">
+    <Disclosure as="nav" className="bg-white shadow-sm ">
+      <div className="mx-auto container h-20 border-b-2 border-gray-200">
         <div className="relative flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link to="/" className="flex shrink-0 items-center">
@@ -30,28 +30,22 @@ const NavBar = () => {
 
           <div className="hidden sm:flex items-center space-x-4">
             <Link
-              to=""
+              to="/category"
               className="text-black hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium"
             >
               Shop
             </Link>
             <Link
-              to=""
+              to="/onsale"
               className="text-black hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium"
             >
               On Sale
             </Link>
             <Link
-              to=""
+              to="/newarrival"
               className="text-black hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium"
             >
               New Arrivals
-            </Link>
-            <Link
-              to=""
-              className="text-black hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium"
-            >
-              Brands
             </Link>
           </div>
 
