@@ -6,6 +6,7 @@ export interface CardProductProps {
   onAddToCart?: () => void;
   discount?: number;
   category?: string;
+  publishedAt?: string;
 }
 
 const shuffleArray = <T,>(array: T[]): T[] => {
@@ -17,6 +18,22 @@ const shuffleArray = <T,>(array: T[]): T[] => {
   return newArray;
 };
 
+// const randomDate = () => {
+//   const now = new Date();
+//   const daysAgo = Math.floor(Math.random() * 30); // từ 0 đến 29 ngày trước
+//   const date = new Date(now.setDate(now.getDate() - daysAgo));
+//   return date.toISOString();
+// };
+const randomDate = (pastDays = 90) => {
+  const now = new Date();
+  const past = new Date(now);
+  past.setDate(past.getDate() - pastDays);
+
+  const randomTime =
+    past.getTime() + Math.random() * (now.getTime() - past.getTime());
+  return new Date(randomTime).toISOString();
+};
+
 export const listProducts: CardProductProps[] = shuffleArray([
   ...Array.from({ length: 5 }, (_, i) => ({
     title: `T-shirt ${i + 1}`,
@@ -26,6 +43,7 @@ export const listProducts: CardProductProps[] = shuffleArray([
     discount: i % 2 === 0 ? 15 : undefined,
     category: "t-shirt",
     onAddToCart: () => console.log(`Added T-shirt ${i + 1} to cart`),
+    publishedAt: randomDate(),
   })),
   ...Array.from({ length: 5 }, (_, i) => ({
     title: `Short ${i + 1}`,
@@ -35,6 +53,7 @@ export const listProducts: CardProductProps[] = shuffleArray([
     discount: i % 3 === 0 ? 10 : undefined,
     category: "short",
     onAddToCart: () => console.log(`Added Short ${i + 1} to cart`),
+    publishedAt: randomDate(),
   })),
   ...Array.from({ length: 5 }, (_, i) => ({
     title: `Jean ${i + 1}`,
@@ -44,6 +63,7 @@ export const listProducts: CardProductProps[] = shuffleArray([
     discount: i % 4 === 0 ? 20 : undefined,
     category: "jean",
     onAddToCart: () => console.log(`Added Jean ${i + 1} to cart`),
+    publishedAt: randomDate(),
   })),
   ...Array.from({ length: 5 }, (_, i) => ({
     title: `Polo ${i + 1}`,
@@ -53,6 +73,7 @@ export const listProducts: CardProductProps[] = shuffleArray([
     discount: i % 2 === 0 ? 12 : undefined,
     category: "polo",
     onAddToCart: () => console.log(`Added Polo ${i + 1} to cart`),
+    publishedAt: randomDate(),
   })),
   ...Array.from({ length: 5 }, (_, i) => ({
     title: `Shirt ${i + 1}`,
@@ -62,5 +83,6 @@ export const listProducts: CardProductProps[] = shuffleArray([
     discount: i % 2 === 0 ? 12 : undefined,
     category: "shirt",
     onAddToCart: () => console.log(`Added Shirt ${i + 1} to cart`),
+    publishedAt: randomDate(),
   })),
 ]);

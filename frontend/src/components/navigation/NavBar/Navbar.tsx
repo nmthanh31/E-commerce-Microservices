@@ -36,13 +36,13 @@ const NavBar = () => {
               Shop
             </Link>
             <Link
-              to=""
+              to="/onsale"
               className="text-black hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium"
             >
               On Sale
             </Link>
             <Link
-              to=""
+              to="/newarrival"
               className="text-black hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium"
             >
               New Arrivals
